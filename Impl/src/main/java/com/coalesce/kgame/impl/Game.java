@@ -1,7 +1,7 @@
 package com.coalesce.kgame.impl;
 
 import com.coalesce.kgame.KGame;
-import org.bukkit.Bukkit;
+import com.coalesce.kgame.utilities.BukkitUtils;
 
 public class Game extends KGame {
     /**
@@ -12,6 +12,6 @@ public class Game extends KGame {
      */
     @Deprecated
     public static Game getInstance() {
-        return (Game) Bukkit.getServicesManager().getRegistration(KGame.class).getProvider();
+        return (Game) BukkitUtils.getService(KGame.class);
     }
 }
