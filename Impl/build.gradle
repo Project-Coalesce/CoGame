@@ -13,6 +13,7 @@ repositories {
         url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
     mavenCentral()
+    mavenLocal()
 }
 
 idea {
@@ -24,5 +25,6 @@ idea {
 
 dependencies {
     compileOnly 'org.bukkit:bukkit:1.11.2-R0.1-SNAPSHOT'
+    compileOnly 'com.coalesce:core:1.0'
     compile project(":kgame-api")
 }
