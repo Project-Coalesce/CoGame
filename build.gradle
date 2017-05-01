@@ -2,13 +2,8 @@ group 'com.coalesce'
 version '1.0-SNAPSHOT'
 apply plugin: 'idea'
 apply plugin: 'java'
-apply plugin: 'kotlin'
+//noinspection SpellCheckingInspection
 apply plugin: 'com.github.johnrengelman.shadow'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-compileJava.options.encoding = 'UTF-8'
 
 buildscript {
     repositories {
@@ -17,33 +12,13 @@ buildscript {
     }
 
     dependencies {
-        //noinspection SpellCheckingInspection
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.2"
+        //noinspection SpellCheckingInspection,GroovyAssignabilityCheck
         classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
     }
 }
 
-repositories {
-    maven {
-        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-    }
-    mavenCentral()
-}
-
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
-}
-
 dependencies {
-    compileOnly 'org.bukkit:bukkit:1.11.2-R0.1-SNAPSHOT'
-    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:1.1.2'
-}
-
-compileKotlin {
-    kotlinOptions.noStdlib = false
+    compile project(":kgame-impl") // Compile upon shadowJar.
 }
 
 shadowJar {
@@ -54,8 +29,9 @@ jar {
     manifest {
         //noinspection GroovyAssignabilityCheck
         attributes([
-                'Main-Class': 'com.coalesce.kgame.MainKt',
-                'Version': rootProject.version
+                //noinspection SpellCheckingInspection
+                'Main-Class': 'com.coalesce.kgame.Main',
+                'Version'   : rootProject.version
         ])
     }
 }
