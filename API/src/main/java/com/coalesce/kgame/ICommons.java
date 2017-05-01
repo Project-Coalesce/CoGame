@@ -1,6 +1,6 @@
 package com.coalesce.kgame;
 
-import org.bukkit.Bukkit;
+import com.coalesce.kgame.utilities.BukkitUtils;
 
 /**
  * Common methods which has to be implemented by pretty much all parts of the library.
@@ -15,6 +15,6 @@ public interface ICommons {
      * @since 1.0
      */
     default KGame getFramework() {
-        return Bukkit.getServicesManager().getRegistration(KGame.class).getProvider();
+        return BukkitUtils.getService(KGame.class);
     }
 }
